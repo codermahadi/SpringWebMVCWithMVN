@@ -1,11 +1,15 @@
 package com.mahadi.controller;
 
+import com.mahadi.dao.Notice;
+import com.mahadi.service.NoticeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,9 +18,18 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
+    private NoticeService noticeService;
+
+    @Autowired
+    public void setNoticeService(NoticeService noticeService) {
+        this.noticeService = noticeService;
+    }
+
     @RequestMapping(value = "/")
     public String home(Model model){
-        model.addAttribute("name", "Hasan");
+
+        List<Notice> notices = noticeService.getCurrent();
+        model.addAttribute("notices", notices);
         return "home";
     }
 

@@ -10,10 +10,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
 
-<sql:query var="rs" dataSource="jdbc/spring">
-    select id, name, email, texts from notices where id=1
-</sql:query>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,13 +21,12 @@
 </head>
 <body>
 Welcome To Spring Web MVC <br>
-Request: <c:out value="${name}" />
 
-<c:forEach var="row" items="${rs.rows}">
-    Foo ${row.id}<br/>
-    Bar ${row.name}<br/>
-    Bar ${row.email}<br/>
-    Bar ${row.texts}<br/>
+<c:forEach var="notice" items="${notices}">
+    <p style="color: brown"><b>ID:</b> ${notice.id}<br/></p>
+     NAME: ${notice.name}<br/>
+     EMAIL: ${notice.email}<br/>
+     TEXTS: ${notice.text}<br/>
 </c:forEach>
 </body>
 </html>
