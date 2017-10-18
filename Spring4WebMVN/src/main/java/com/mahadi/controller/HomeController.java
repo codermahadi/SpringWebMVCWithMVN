@@ -18,18 +18,8 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    private NoticeService noticeService;
-
-    @Autowired
-    public void setNoticeService(NoticeService noticeService) {
-        this.noticeService = noticeService;
-    }
-
     @RequestMapping(value = "/")
-    public String home(Model model){
-
-        List<Notice> notices = noticeService.getCurrent();
-        model.addAttribute("notices", notices);
+    public String home(){
         return "home";
     }
 

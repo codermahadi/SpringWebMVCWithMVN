@@ -21,12 +21,8 @@
 </head>
 <body>
 Welcome To Spring Web MVC <br>
-
-<c:forEach var="notice" items="${notices}">
-    <p style="color: brown"><b>ID:</b> ${notice.id}<br/></p>
-     NAME: ${notice.name}<br/>
-     EMAIL: ${notice.email}<br/>
-     TEXTS: ${notice.text}<br/>
-</c:forEach>
+<hr>
+<p><a href="${pageContext.request.contextPath}/notices">Show Current Notices</a></p>
+<p><a href="${pageContext.request.contextPath}/createnotices">Create Notices</a></p>
 </body>
 </html>
