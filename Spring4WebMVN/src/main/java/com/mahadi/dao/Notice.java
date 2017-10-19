@@ -1,13 +1,29 @@
 package com.mahadi.dao;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * Created by Mahadi on 10/15/2017.
  */
 public class Notice {
 
     private int id;
+
+    @NotNull
+    @Size(min=4, max=30)
     private String name;
+
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Email
     private String email;
+
+    @NotNull
+    @Size(min=10, max=200)
     private String text;
 
     public Notice() {

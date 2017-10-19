@@ -5,10 +5,13 @@ import com.mahadi.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -39,13 +42,22 @@ public class NoticeController {
    }
 
    @RequestMapping("/createnotices")
-   public String createNotices(){
+   public String createNotices(Model model){
+       model.addAttribute(new Notice());
        return "createnotices";
    }
 
    @RequestMapping( value = "/docreated", method = RequestMethod.POST)
-   public String doCreate(Model model, Notice notice){
-       System.out.println(notice);
+   public String doCreate(Model model, @Valid Notice notice, BindingResult result){
+
+       if (result.hasErrors()){
+           List<ObjectError> objectErrors = result.getAllErrors();
+           for (ObjectError objectError: objectErrors){
+               System.out.println(objectError.getDefaultMessage());
+               return "createnotices";
+           }
+       }
        return "noticecreated";
+
    }
 }
