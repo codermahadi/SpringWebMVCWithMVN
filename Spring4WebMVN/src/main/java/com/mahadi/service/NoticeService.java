@@ -25,4 +25,7 @@ public class NoticeService {
         return noticesDAO.getNotices();
     }
 
+    public void create(Notice notice) {
+        noticesDAO.create(notice);
+    }
 }

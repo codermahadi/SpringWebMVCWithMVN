@@ -1,9 +1,7 @@
 package com.mahadi.dao;
 
-import org.hibernate.validator.constraints.Email;
-
+import com.mahadi.validation.ValidEmail;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -13,17 +11,16 @@ public class Notice {
 
     private int id;
 
-    @NotNull
-    @Size(min=4, max=30)
+    @NotNull(message = "Field Must be not empty !")
+    @Size(min=4, max=30, message = "You Must be write 4 between 30 characters")
     private String name;
 
     @NotNull
-    @Size(min = 1, max = 100)
-    @Email
+    @ValidEmail
     private String email;
 
-    @NotNull
-    @Size(min=10, max=200)
+    @NotNull(message = "Field Must No be empty !")
+    @Size(min=10, max=200, message = "You Must be write 10 between 200 characters")
     private String text;
 
     public Notice() {

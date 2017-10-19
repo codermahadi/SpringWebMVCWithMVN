@@ -35,10 +35,30 @@
 </nav>
 <hr>
 
-<c:forEach var="notice" items="${notices}">
-    <p><c:out value="${notice}"></c:out></p>
-</c:forEach>
+<div class="container-fluid">
+    <div class="container">
+        <table class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Text</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="notice" items="${notices}">
+            <tr>
+                <th scope="row"><c:out value="${notice.id}"></c:out></th>
+                <td><c:out value="${notice.name}"></c:out></td>
+                <td><c:out value="${notice.email}"></c:out></td>
+                <td><c:out value="${notice.text}"></c:out></td>
+            </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/lib/bootstrap/js/jquery.js"></script>
 </body>
 </html>

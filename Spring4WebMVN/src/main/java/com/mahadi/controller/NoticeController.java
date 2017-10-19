@@ -51,12 +51,10 @@ public class NoticeController {
    public String doCreate(Model model, @Valid Notice notice, BindingResult result){
 
        if (result.hasErrors()){
-           List<ObjectError> objectErrors = result.getAllErrors();
-           for (ObjectError objectError: objectErrors){
-               System.out.println(objectError.getDefaultMessage());
-               return "createnotices";
-           }
+           return "createnotices";
        }
+
+       noticeService.create(notice);
        return "noticecreated";
 
    }

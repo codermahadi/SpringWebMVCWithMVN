@@ -31,5 +31,6 @@
     </div>
 </nav>
 <hr>
+<div class="alert-success"><p>Notice Created !</p></div>
 </body>
 </html>
